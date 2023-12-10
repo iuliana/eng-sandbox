@@ -27,41 +27,50 @@ SOFTWARE.
 */
 package org.eng.hackerrank;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.IntStream;
+
 import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- *
- * <a href="https://www.hackerrank.com/challenges/java-if-else/problem?isFullScreen=true">Java If-Else</a>
+ * <a href="https://www.hackerrank.com/challenges/java-output-formatting/problem?isFullScreen=true">Java Output Formatting</a>
  */
-public class BasicJavaIfElse {
 
-    public static String getType(int N) {
-        var type = "Weird";
-        if( N <0 || N > 100) {
-            throw new IllegalArgumentException("N outside interval!");
+
+
+public class BasicFormatting {
+    record Entry(String a, int b){}
+    public static void main(String... args) {
+        List<Entry> entries = new ArrayList<>();
+
+        try(var sc = new Scanner(System.in)) {
+            IntStream.range(0, 3).forEach(_ -> {
+                String line = sc.nextLine();
+                var terms = line.split(" ");
+                if (terms.length != 2) {
+                    throw new IllegalArgumentException("Number of arguments mismatch!");
+                }
+                var str = terms[0];
+                if (str.length() > 10) {
+                    throw new IllegalArgumentException("String length too big!");
+                }
+                var no = Integer.parseInt(terms[1].strip());
+                if (no < 0 || no > 999) {
+                    throw new IllegalArgumentException("Number not in interval!");
+                }
+                entries.add(new Entry(str, no));
+            });
         }
 
-        if (N % 2 != 0) {
-            return type;
-        }
-
-        if (N>=2 && N<= 5) {
-            return STR."Not \{type}";
-        } else  if (N>=6 && N<= 20) {
-            return type;
-        } else {
-            return STR."Not \{type}";
-        }
-    }
-
-    public static void main(String... args) throws IOException {
-        try(var bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
-            var N = Integer.parseInt(bufferedReader.readLine().strip());
-            out.println(getType(N));
-        }
+        out.println("================================");
+        entries.forEach(r -> {
+            out.printf("%-15s", r.a);
+            out.printf("%03d%n", r.b);
+            }
+        );
+        out.println("================================");
     }
 }

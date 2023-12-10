@@ -25,34 +25,31 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng;
+package org.eng.hackerrank;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Stream;
+import java.io.InputStreamReader;
+import java.util.stream.IntStream;
+
+import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
  *
- * @version TODO
+ * <a href="https://www.hackerrank.com/challenges/java-loops-i/problem?isFullScreen=true">Java Loops I</a>
  */
-public class InReader {
+public class BasicLoopI {
+    public static void main(String... args) throws IOException {
+        try(var bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+            var N = Integer.parseInt(bufferedReader.readLine().strip());
+            if (N < 2 || N > 20) {
+                throw new IllegalArgumentException("N outside permitted interval!");
+            }
 
-    // this is actually the best way to read a file in Java
-    public static Stream<String> lines(String fileName, Class c) throws IOException {
-       return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8);
-    }
-
-    public static int line(String fileName, Class c) throws IOException {
-        return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8).findFirst().map(Integer::parseInt).orElse(-1);
-    }
-
-    public static BufferedReader getReader(String fileName, Class c) throws IOException {
-        return Files.newBufferedReader(Path.of(c.getClassLoader().getResource(fileName).getPath()));
+            IntStream.range(1, 11).forEach(i -> {
+                out.println(STR."\{N} x \{i} = \{N*i}");
+            });
+        }
     }
 }

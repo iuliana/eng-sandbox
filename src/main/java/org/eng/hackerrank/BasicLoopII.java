@@ -37,7 +37,7 @@ import static java.lang.System.out;
 
  * <a href="https://www.hackerrank.com/challenges/java-loops/problem?isFullScreen=true">Java Loops II</a>
  */
-public class BasicLoop {
+public class BasicLoopII {
 
     public static Function<String,String> COMPUTE =  line -> {
         var terms = line.split(" ");

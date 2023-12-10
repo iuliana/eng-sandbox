@@ -25,34 +25,67 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng;
+package org.eng.aoc;
+
+import org.eng.InReader;
+import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Created by iuliana on 09/12/2023
+ * Created by iuliana on 10/12/2023
  *
  * @version TODO
  */
-public class InReader {
-
-    // this is actually the best way to read a file in Java
-    public static Stream<String> lines(String fileName, Class c) throws IOException {
-       return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8);
+public class AlphaNumericCypherTest {
+    @Test
+    void testSampleZero() throws IOException {
+        testTheThing("aoc-00");
     }
 
-    public static int line(String fileName, Class c) throws IOException {
-        return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8).findFirst().map(Integer::parseInt).orElse(-1);
+    @Test
+    void testSampleOne() throws IOException {
+        testTheThing("aoc-01-2");
     }
 
-    public static BufferedReader getReader(String fileName, Class c) throws IOException {
-        return Files.newBufferedReader(Path.of(c.getClassLoader().getResource(fileName).getPath()));
+    @Test
+    void testSampleTwo() throws IOException {
+        testTheThing("aoc-02");
+    }
+
+    @Test
+    void testSampleThree() throws IOException {
+        testTheThing("aoc-03");
+    }
+
+    @Test
+    void testSampleFour() throws IOException {
+        testTheThing("aoc-04");
+    }
+
+    @Test
+    void testSampleFive() throws IOException {
+        testTheThing("aoc-05");
+    }
+
+    @Test
+    void testSampleOfficial() throws IOException {
+        testTheThing("aoc-99-2");
+    }
+
+    void testTheThing(String filename) throws IOException {
+        var sum = 0;
+        try(BufferedReader br = InReader.getReader(STR."\{filename}.in", this.getClass())) {
+            String line;
+            while ( (line = br.readLine()) != null) {
+                sum += AlphaNumericCypher.decode(line);
+            }
+        }
+
+        var output  = InReader.line(STR."\{filename}.out", this.getClass());
+        assertEquals(output, sum);
     }
 }

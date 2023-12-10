@@ -25,34 +25,40 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng;
+package org.eng.hackerrank;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.Scanner;
+
+import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- *
- * @version TODO
+ * <a href="https://www.hackerrank.com/challenges/java-static-initializer-block/problem?isFullScreen=true">Java Static Initializer</a>
  */
-public class InReader {
+public class BasicStaticInitializer {
 
-    // this is actually the best way to read a file in Java
-    public static Stream<String> lines(String fileName, Class c) throws IOException {
-       return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8);
+    static int B;
+    static int H;
+
+    static {
+        try (var sc = new Scanner(System.in)) {
+            B = sc.nextInt();
+            if (B < -100 || B > 100) {
+                throw new IllegalArgumentException("B outside permitted interval");
+            }
+            sc.nextLine();
+            H = sc.nextInt();
+            if (H < -100 || H > 100) {
+                throw new IllegalArgumentException("H outside permitted interval");
+            }
+        }
     }
 
-    public static int line(String fileName, Class c) throws IOException {
-        return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8).findFirst().map(Integer::parseInt).orElse(-1);
-    }
-
-    public static BufferedReader getReader(String fileName, Class c) throws IOException {
-        return Files.newBufferedReader(Path.of(c.getClassLoader().getResource(fileName).getPath()));
+    public static void main(String... args) {
+        if (B <= 0 || H <= 0) {
+            out.println("java.lang.Exception: Breadth and height must be positive");
+            return;
+        }
+        out.println( B*H );
     }
 }

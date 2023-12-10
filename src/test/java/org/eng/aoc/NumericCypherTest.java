@@ -25,71 +25,48 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.hackerrank;
+package org.eng.aoc;
 
-import org.eng.AppTest;
 import org.eng.InReader;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import static java.lang.System.out;
-import static org.eng.hackerrank.BasicLoop.COMPUTE;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Created by iuliana on 09/12/2023
+ * Created by iuliana on 10/12/2023
  *
+ * @version TODO
  */
-public class BasicLoopTest {
-    private static final Logger LOG = LoggerFactory.getLogger(AppTest.class);
+public class NumericCypherTest {
 
     @Test
     void testSampleZero() throws IOException {
-        testTheThing("basic-loop-00");
+        testTheThing("aoc-00");
     }
 
     @Test
     void testSampleOne() throws IOException {
-        testTheThing("basic-loop-01");
+        testTheThing("aoc-01");
+    }
+
+    @Test
+    void testSampleOfficial() throws IOException {
+        testTheThing("aoc-99");
     }
 
     void testTheThing(String filename) throws IOException {
-
-        List<String> result = new ArrayList<>();
-
+        var sum = 0;
         try(BufferedReader br = InReader.getReader(STR."\{filename}.in", this.getClass())) {
-            var inputCount = 0;
             String line;
             while ( (line = br.readLine()) != null) {
-                inputCount = inputCount +1;
-                if(inputCount == 1 ) {
-                   var linesNo = Integer.parseInt(line.strip());
-                   if(linesNo < 0 || linesNo > 500) {
-                       throw new IllegalArgumentException("Too many lines!");
-                   }
-                } else {
-                    result.add(COMPUTE.apply(line));
-                }
+                sum += NumericCypher.decode(line);
             }
         }
 
-        out.println("-------------------------");
-
-        var output  = InReader.lines(STR."\{filename}.out", this.getClass()).toList();
-
-        var check = true;
-        for (int i = 0; i < output.size(); i++) {
-            out.println(STR."\{output.get(i)}<>\{result.get(i)}");
-            check &= output.get(i).endsWith(result.get(i));
-        }
-        assertTrue(check);
+        var output  = InReader.line(STR."\{filename}.out", this.getClass());
+        assertEquals(output, sum);
     }
-
-
 }

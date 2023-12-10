@@ -27,26 +27,42 @@ SOFTWARE.
 */
 package org.eng.hackerrank;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- *
- * <a href="https://www.hackerrank.com/challenges/java-stdin-and-stdout-1/problem?isFullScreen=true">Java Stdin and Stdout I</a>
+ * <a href="https://www.hackerrank.com/challenges/java-datatypes/problem?isFullScreen=true">Java DataTypes</a>
  */
-public class BasicSin {
+public class BasicDataTypes {
+    public static Predicate<Long> isByte = x -> x >= Byte.MIN_VALUE && x <= Byte.MAX_VALUE;
+    public static Predicate<Long> isShort = x -> x >= Short.MIN_VALUE && x <= Short.MAX_VALUE;
+    public static Predicate<Long> isInteger = x -> x >= Integer.MIN_VALUE && x <= Integer.MAX_VALUE;
+    public static Predicate<Long> isLong = x -> x >= Long.MIN_VALUE && x <= Long.MAX_VALUE;
 
-    public static void main(String... args) throws IOException {
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-            IntStream.range(0, 3).forEach(_ -> {
+    public static void main(String... args) {
+        try (var sc = new Scanner(System.in)) {
+            var t = sc.nextInt();
+            List<String> input = new ArrayList<>();
+            sc.nextLine();
+            IntStream.range(0, t).forEach(i -> input.add(sc.nextLine().strip()));
+
+            input.forEach(line -> {
                 try {
-                    out.println(Integer.parseInt(reader.readLine()));
-                } catch (IOException _) {}
+                    var x = Long.parseLong(line);
+                    out.println(x + " can be fitted in:");
+                    if (isByte.test(x)) out.println("* byte");
+                    if (isShort.test(x)) out.println("* short");
+                    if (isInteger.test(x)) out.println("* int");
+                    if (isLong.test(x)) out.println("* long");
+                } catch (Exception e) {
+                    out.println(line + " can't be fitted anywhere.");
+                }
             });
         }
     }

@@ -25,34 +25,30 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng;
+package org.eng.hackerrank;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Stream;
+import java.io.InputStreamReader;
+
+import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- *
- * @version TODO
- */
-public class InReader {
-
-    // this is actually the best way to read a file in Java
-    public static Stream<String> lines(String fileName, Class c) throws IOException {
-       return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8);
-    }
-
-    public static int line(String fileName, Class c) throws IOException {
-        return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8).findFirst().map(Integer::parseInt).orElse(-1);
-    }
-
-    public static BufferedReader getReader(String fileName, Class c) throws IOException {
-        return Files.newBufferedReader(Path.of(c.getClassLoader().getResource(fileName).getPath()));
+ * h<a href="ttps://www.hackerrank.com/challenges/java-end-of-file/problem?isFullScreen=true">Java End Of File</a> */
+public class BasicEndOfFile {
+    public static void main(String... args) throws IOException {
+        int lineNo = 0;
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
+            while(true) {
+                try {
+                    lineNo += 1;
+                    var line = reader.readLine();
+                    if (line == null || line.isBlank()) return;
+                    out.println(lineNo + " " + line);
+                } catch (IOException e) {
+                }
+            }
+        }
     }
 }
