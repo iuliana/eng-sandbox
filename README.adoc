@@ -1,2 +1,6 @@
 = eng-sandbox
 
+This project contains various solutions for various coding challenges over the internet. Basically, my trys and toys. ;)
+
+If you find it interesting, feel free to suggest a problem to solve or comment on my solution.
+
