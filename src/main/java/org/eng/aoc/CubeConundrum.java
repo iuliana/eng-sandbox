@@ -27,14 +27,53 @@ SOFTWARE.
 */
 package org.eng.aoc;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Pattern;
+
 /**
  * Created by iuliana on 10/12/2023
- *
  * <a href="https://adventofcode.com/2023/day/2">Day Two</a>
  */
 public class CubeConundrum {
 
-    public static void main(String... args) {
-        // TODO
+    public static final Pattern GAME = Pattern.compile("^(Game\\s)([0-9]+)(:\\s)(.*)");
+
+    public static final Handful TOTAL = new Handful(12, 13, 14);
+
+    public record Handful( int red, int green, int blue) {}
+
+    public record Game(int id, List<Handful> handful){}
+
+    public static Game parseGame(String line) {
+        var matcher = GAME.matcher(line);
+        if(matcher.find()) {
+            var groupId = matcher.group(2);
+            var sets = matcher.group(4).split(";");
+            var games = new ArrayList<Handful>();
+            Arrays.stream(sets).forEach(s -> {
+                var cubes = s.split(",");
+                var r = 0;
+                int g = 0;
+                int b = 0;
+                for (String c : cubes) {
+                    if (c.contains("red")) {
+                        r = Integer.parseInt(c.replace(" red", "").strip());
+                    }
+                    if (c.contains("green")) {
+                        g = Integer.parseInt(c.replace(" green", "").strip());
+                    }
+                    if (c.contains("blue")) {
+                        b = Integer.parseInt(c.replace(" blue", "").strip());
+                    }
+                }
+                ;
+                games.add(new Handful(r, g, b));
+            });
+
+            return new Game(Integer.parseInt(groupId.strip()), games);
+        }
+        return null;
     }
 }
