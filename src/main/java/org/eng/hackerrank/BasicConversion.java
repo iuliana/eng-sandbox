@@ -28,8 +28,11 @@ SOFTWARE.
 package org.eng.hackerrank;
 
 import java.io.*;
+
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.Scanner;
 
 import static java.lang.System.out;
@@ -117,14 +120,20 @@ public class BasicConversion {
     public static void currencyFormatter(){
         try(var scan = new Scanner(System.in)) {
             var payment = scan.nextDouble();
-
-            // TODO
-
-           /* System.out.println("US: " + us);
-            System.out.println("India: " + india);
-            System.out.println("China: " + china);
-            System.out.println("France: " + france);*/
+            out.print(format(payment));
         }
+    }
+
+    public static String format(Double payment) {
+        var s = "";
+        if (payment >= 0 && payment <= Math.pow(10, 9)) {
+          return STR."""
+                US: \{NumberFormat.getCurrencyInstance(Locale.US).format(payment)}
+                India: \{NumberFormat.getCurrencyInstance(Locale.of("en", "IN")).format(payment)}
+                China: \{NumberFormat.getCurrencyInstance(Locale.CHINA).format(payment)}
+                France: \{NumberFormat.getCurrencyInstance(Locale.FRANCE).format(payment)}""" ;
+        }
+        return s;
     }
 
 // -----------------------------------------------------------------------------------------------------------------------
@@ -134,10 +143,10 @@ public class BasicConversion {
             if(args[0].equals("1")) {
                 intToString();
             } else {
-                currencyFormatter();
+                printDay();
             }
         } else {
-            printDay();
+            currencyFormatter();
         }
     }
 }

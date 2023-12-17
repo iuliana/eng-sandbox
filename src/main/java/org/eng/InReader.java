@@ -48,6 +48,10 @@ public class InReader {
        return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8);
     }
 
+    public static String text(String fileName, Class c) throws IOException {
+        return Files.readString(Path.of(c.getClassLoader().getResource(fileName).getPath()));
+    }
+
     public static int line(String fileName, Class c) throws IOException {
         return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8).findFirst().map(Integer::parseInt).orElse(-1);
     }

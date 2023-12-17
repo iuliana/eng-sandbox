@@ -27,34 +27,13 @@ SOFTWARE.
 */
 package org.eng.hackerrank;
 
-import org.eng.InReader;
-import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 /**
- * Created by iuliana on 10/12/2023
+ * Created by iuliana on 17/12/2023
  *
- * @version TODO
+ * <a href="https://www.hackerrank.com/challenges/can-you-access/problem?isFullScreen=true">Can You Access</a>
  */
-public class BasicConversionTest {
+public class InnerClassProblem {
+    public static void main(String... args) {
 
-    @Test
-    void findDayCheck(){
-        assertEquals("wednesday".toUpperCase(), BasicConversion.findDay(8,5, 2015));
-    }
-
-    @Test
-    void findDayUsingCalendarCheck(){
-        assertEquals("wednesday".toUpperCase(), BasicConversion.findDayUsingCalendar(8,5, 2015));
-    }
-
-    @Test
-    void convertPayment() throws IOException {
-        var res = BasicConversion.format(12324.134D);
-        var out = InReader.text("currency.out", this.getClass());
-        assertEquals(out, res);
     }
 }

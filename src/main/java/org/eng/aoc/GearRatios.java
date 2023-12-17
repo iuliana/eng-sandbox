@@ -27,6 +27,13 @@ SOFTWARE.
 */
 package org.eng.aoc;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
+import static java.lang.System.out;
+
 /**
  * Created by iuliana on 14/12/2023
  *
@@ -34,7 +41,83 @@ package org.eng.aoc;
  */
 public class GearRatios {
 
-    public static void main(String... args) {
-        // TODO
+    public static final List<Character> SYMBOLS = List.of('*', '+', '-', '%', '/', '@', '=', '&', '$', '#');
+    record IndexedNumber(int number, List<Integer> indexes) {}
+    record Tuple(Integer sum, List<IndexedNumber> indexedNos) {}
+
+    public static Tuple horizontalParseAndAdd(String line){
+        var result = new ArrayList<IndexedNumber>();
+        var sum = new AtomicInteger(0);
+        var number =  new StringBuilder();
+        var indexes =  new ArrayList<Integer>();
+        IntStream.range(0, line.length()).forEach(i -> {
+            if(line.charAt(i) == '.' ||  SYMBOLS.contains(line.charAt(i))) {
+                //out.print(line.charAt(i));
+                if (!number.isEmpty() && !indexes.isEmpty()) {
+                    var in = new IndexedNumber(Integer.parseInt(number.toString()), List.copyOf(indexes));
+                    if (SYMBOLS.contains(line.charAt(i)) || ( i-number.length()-1 >=0 && SYMBOLS.contains(line.charAt(i-number.length()-1)))){
+                        sum.addAndGet(Integer.parseInt(number.toString()));
+                    } else {
+                        result.add(in);
+                    }
+                    number.setLength(0);
+                    indexes.clear();
+                }
+            } else if (Character.isDigit(line.charAt(i))) {
+                number.append(line.charAt(i));
+                indexes.add(i);
+            }
+        });
+        return new Tuple(sum.get(), result);
     }
+
+    public static Tuple diagonalParseAndAdd(List<IndexedNumber> previousOut, String currentLine) {
+        var sum = new AtomicInteger(0);
+
+        for(ListIterator<IndexedNumber> li = previousOut.listIterator(); li.hasNext(); ) {
+            var in = li.next();
+            if (in.indexes.getFirst() - 1 >= 0 && currentLine.charAt(in.indexes.getFirst() -1) != '.') {
+                sum.addAndGet(in.number);
+                out.println(STR."\t \{currentLine.charAt(in.indexes.getFirst() -1)} adds \{in.number}");
+                li.remove();
+            } else if (in.indexes.getLast() + 1 < currentLine.length() && currentLine.charAt(in.indexes.getLast() + 1) != '.') {
+                sum.addAndGet(in.number);
+                out.println(STR."\t \{currentLine.charAt(in.indexes.getLast() + 1)} adds \{in.number}");
+                li.remove();
+            } else {
+                for (var idx : in.indexes) {
+                    if (currentLine.charAt(idx) != '.') {
+                        sum.addAndGet(in.number);
+                        out.println(STR."\t \{currentLine.charAt(idx)} adds \{in.number}");
+                        li.remove();
+                        break;
+                    }
+                }
+            }
+        }
+        return new Tuple( sum.get(), previousOut);
+    }
+
+    public static Integer parseLine(String previous, String current, String  next) {
+        var currentSum = horizontalParseAndAdd(current);
+        var sum = currentSum.sum();
+
+        List<IndexedNumber> indexedNumbers = currentSum.indexedNos();
+        //out.println("H: " + indexedNumbers.size() + ": " + indexedNumbers);
+        if (previous != null && !previous.isEmpty()) {
+            var prevSum = diagonalParseAndAdd(indexedNumbers, previous);
+            sum += prevSum.sum();
+            indexedNumbers = prevSum.indexedNos();
+            //out.println("P: " + indexedNumbers.size() + ": " + indexedNumbers);
+        }
+
+        if (next != null && !next.isEmpty()) {
+            var nextSum = diagonalParseAndAdd(indexedNumbers, next);
+            sum += nextSum.sum();
+            out.println("N: " + nextSum.indexedNos .size() + ": " + nextSum.indexedNos);
+        }
+        out.println("------");        return sum;
+
+    }
+
 }
