@@ -29,7 +29,6 @@ package org.eng.hackerrank;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 
 import static org.eng.hackerrank.BasicJavaIfElse.getType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,7 +36,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Created by iuliana on 09/12/2023
  *
- * @version TODO
  */
 public class BasicJavaIfElseTest {
 

@@ -63,13 +63,26 @@ public class MyRegexTest {
 
     @Test
     void hrSample() throws IOException {
-        var ins = InReader.lines("regex.in", this.getClass());
+        var ins = InReader.lines("regex-00.in", this.getClass());
         var sb = new StringBuilder();
         var checker = new MyRegex();
         ins.map(checker::isValidIP).forEach(b -> sb.append(STR."\{b}\n"));
         sb.setLength(sb.length() - 1);
 
-        var out = InReader.text("regex.out", this.getClass());
+        var out = InReader.text("regex-00.out", this.getClass());
         assertEquals(sb.toString(), out);
     }
+
+
+    @Test
+    void hrRegex2Sample() throws IOException {
+        var ins = InReader.lines("regex-01.in", this.getClass());
+        var sb = new StringBuilder();
+        ins.map(MyRegex2::deleteDups).forEach(b -> sb.append(STR."\{b}\n"));
+        sb.setLength(sb.length() - 1);
+
+        var out = InReader.text("regex-01.out", this.getClass());
+        assertEquals(sb.toString(), out);
+    }
+
 }

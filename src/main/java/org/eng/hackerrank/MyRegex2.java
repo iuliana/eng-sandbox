@@ -27,13 +27,38 @@ SOFTWARE.
 */
 package org.eng.hackerrank;
 
+import java.util.Scanner;
+import java.util.regex.Pattern;
+import static java.lang.System.out;
+
 /**
  * Created by iuliana on 19/12/2023
  *
  * <a href="https://www.hackerrank.com/challenges/duplicate-word/problem">Duplicate Word</a>
+ * For some reason on Hacker Rank, this solution is not accepted in Java 8 and Java 15
  */
 public class MyRegex2 {
+
+    public static final Pattern p = Pattern.compile("\\b(\\w+)\\b(?:\\s+\\1\\b)+", Pattern.CASE_INSENSITIVE);
+
     public static void main(String... args) {
-        // TODO
+        try (var in = new Scanner(System.in)) {
+            int numSentences = Integer.parseInt(in.nextLine());
+            var sb = new StringBuilder();
+            while (numSentences-- > 0) {
+                String input = in.nextLine();
+                sb.append(STR."\{deleteDups(input)}\n");
+            }
+            sb.setLength(sb.length() - 1);
+            out.println(sb);
+        }
+    }
+
+    public static String deleteDups(String input) {
+        var m = p.matcher(input);
+        while (m.find()) {
+            input = input.replaceAll(m.group(), m.group(1));
+        }
+        return input;
     }
 }
