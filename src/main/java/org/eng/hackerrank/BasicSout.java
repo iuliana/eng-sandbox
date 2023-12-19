@@ -33,7 +33,7 @@ import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- * <a href="https://www.hackerrank.com/challenges/welcome-to-java/problem?isFullScreen=true">Welcome to Java!</a>
+ * <a href="https://www.hackerrank.com/challenges/welcome-to-java/problem">Welcome to Java!</a>
  */
 public class BasicSout {
 

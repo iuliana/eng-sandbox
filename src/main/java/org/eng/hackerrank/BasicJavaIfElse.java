@@ -35,7 +35,7 @@ import static java.lang.System.out;
 /**
  * Created by iuliana on 09/12/2023
  *
- * <a href="https://www.hackerrank.com/challenges/java-if-else/problem?isFullScreen=true">Java If-Else</a>
+ * <a href="https://www.hackerrank.com/challenges/java-if-else/problem">Java If-Else</a>
  */
 public class BasicJavaIfElse {
 

@@ -27,28 +27,33 @@ SOFTWARE.
 */
 package org.eng.hackerrank;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import static java.lang.System.out;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
- * Created by iuliana on 09/12/2023
- * h<a href="ttps://www.hackerrank.com/challenges/java-end-of-file/problem">Java End Of File</a> */
-public class BasicEndOfFile {
-    public static void main(String... args) throws IOException {
-        int lineNo = 0;
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-            while(true) {
-                try {
-                    lineNo += 1;
-                    var line = reader.readLine();
-                    if (line == null || line.isBlank()) return;
-                    out.println(lineNo + " " + line);
-                } catch (IOException e) {
-                }
+ * Created by iuliana on 18/12/2023
+ *
+ * <a href="https://www.hackerrank.com/challenges/java-regex/problem">Java Regex</a>
+ * IP address is a string in the form "A.B.C.D", where the value of A, B, C, and D may range from 0 to 255.
+ * Leading zeros are allowed. The length of A, B, C, or D can't be greater than 3.
+ */
+public class MyRegex {
+
+    static final String regex = "^([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\\." +
+            "([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\\." +
+            "([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\\." +
+            "([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])$";
+
+    public static void main(String... args) {
+        try (var in = new Scanner(System.in)) {
+            while (in.hasNext()) {
+                String IP = in.next();
+                System.out.println(IP.matches(regex));
             }
         }
     }
+    public boolean isValidIP(String ip){
+        return ip.matches(regex);
+    }
+
 }

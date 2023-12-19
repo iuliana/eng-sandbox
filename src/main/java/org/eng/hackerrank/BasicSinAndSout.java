@@ -33,7 +33,7 @@ import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- * <a href="https://www.hackerrank.com/challenges/java-stdin-stdout/problem?isFullScreen=true">Java Stdin and Stdout II</a>
+ * <a href="https://www.hackerrank.com/challenges/java-stdin-stdout/problem">Java Stdin and Stdout II</a>
  */
 public class BasicSinAndSout {
 

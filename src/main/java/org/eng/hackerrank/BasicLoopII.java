@@ -35,7 +35,7 @@ import static java.lang.System.out;
 /**
  * Created by iuliana on 09/12/2023
 
- * <a href="https://www.hackerrank.com/challenges/java-loops/problem?isFullScreen=true">Java Loops II</a>
+ * <a href="https://www.hackerrank.com/challenges/java-loops/problem">Java Loops II</a>
  */
 public class BasicLoopII {
 

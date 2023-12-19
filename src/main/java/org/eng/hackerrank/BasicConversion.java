@@ -43,7 +43,7 @@ import static java.lang.System.out;
 public class BasicConversion {
 
     /**
-     * <a href="https://www.hackerrank.com/challenges/java-int-to-string/problem?isFullScreen=true">Java Int to String</a>
+     * <a href="https://www.hackerrank.com/challenges/java-int-to-string/problem">Java Int to String</a>
      * @throws IOException
      */
     public static void intToString() throws IOException {
@@ -91,7 +91,7 @@ public class BasicConversion {
     }
 
     /**
-     * <a href="https://www.hackerrank.com/challenges/java-date-and-time/problem?isFullScreen=true">Java Date and Time</a>
+     * <a href="https://www.hackerrank.com/challenges/java-date-and-time/problem">Java Date and Time</a>
      */
     public static void printDay() throws IOException {
         try( var bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -115,7 +115,7 @@ public class BasicConversion {
     }
 
     /**
-     * <a href="https://www.hackerrank.com/challenges/java-currency-formatter/problem?isFullScreen=true">Java Currency Formatter</a>
+     * <a href="https://www.hackerrank.com/challenges/java-currency-formatter/problem">Java Currency Formatter</a>
      */
     public static void currencyFormatter(){
         try(var scan = new Scanner(System.in)) {

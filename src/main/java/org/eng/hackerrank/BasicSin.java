@@ -37,7 +37,7 @@ import static java.lang.System.out;
 /**
  * Created by iuliana on 09/12/2023
  *
- * <a href="https://www.hackerrank.com/challenges/java-stdin-and-stdout-1/problem?isFullScreen=true">Java Stdin and Stdout I</a>
+ * <a href="https://www.hackerrank.com/challenges/java-stdin-and-stdout-1/problem">Java Stdin and Stdout I</a>
  */
 public class BasicSin {
 

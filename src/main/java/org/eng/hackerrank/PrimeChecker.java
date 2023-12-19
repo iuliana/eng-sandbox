@@ -32,69 +32,69 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
-
 import static java.lang.System.out;
 
 /**
- * Created by iuliana on 16/12/2023
- *
- * <a href="https://www.hackerrank.com/challenges/simple-addition-varargs/problem">Simple Addition Varargs</a>
+ * Created by iuliana on 18/12/2023
+ * <a href="https://www.hackerrank.com/challenges/prime-checker/problem">Prime Checker</a>
  */
+public class PrimeChecker {
 
-class Add {
-
-    public void add(int... n) {
-        if(n.length == 0) {
-            throw new NumberFormatException("No terms to add.");
-        } else if (n.length == 1) {
-            throw new NumberFormatException("Not enough terms to add.");
-        } else {
-            var sum = 0;
-            for (int i = 0; i < n.length; i++) {
-                out.print(n[i]);
-                if (i < n.length -1) {
-                    out.print("+");
-                }
-                sum +=n[i];
-            }
-            out.println(STR."=\{sum}");
-        }
-    }
-}
-public class VarArgsProblem {
-
-    public static void main(String... args) throws Exception {
-        try(var br=new BufferedReader(new InputStreamReader(System.in))) {
+    public static void main(String... args) {
+        try(BufferedReader br=new BufferedReader(new InputStreamReader(System.in))) {
             int n1=Integer.parseInt(br.readLine());
             int n2=Integer.parseInt(br.readLine());
             int n3=Integer.parseInt(br.readLine());
             int n4=Integer.parseInt(br.readLine());
             int n5=Integer.parseInt(br.readLine());
-            int n6=Integer.parseInt(br.readLine());
-
-            Add ob=new Add();
-            ob.add(n1,n2);
-            ob.add(n1,n2,n3);
-            ob.add(n1,n2,n3,n4,n5);
-            ob.add(n1,n2,n3,n4,n5,n6);
-
-            // WTF is this ?
-            Method[] methods=Add.class.getDeclaredMethods();
-
+            Prime ob=new Prime();
+            ob.checkPrime(n1);
+            ob.checkPrime(n1,n2);
+            ob.checkPrime(n1,n2,n3);
+            ob.checkPrime(n1,n2,n3,n4,n5);
+            Method[] methods=Prime.class.getDeclaredMethods();
             Set<String> set=new HashSet<>();
             boolean overload=false;
-
-            for(int i=0;i<methods.length;i++) {
-                if(set.contains(methods[i].getName())) {
-                    overload=true;
+            for (Method method : methods) {
+                if (set.contains(method.getName())) {
+                    overload = true;
                     break;
                 }
-                set.add(methods[i].getName());
+                set.add(method.getName());
+
             }
             if(overload) {
                 throw new Exception("Overloading not allowed");
             }
-            // wtf ? ....
+        } catch(Exception e) {
+            out.println(e);
         }
+    }
+}
+
+class Prime {
+
+    void checkPrime(int... args) {
+        for (int i = 0; i < args.length; i++) {
+            if (isPrime(args[i])) {
+                out.print(args[i]);
+                if ( i < args.length -1){
+                    out.print(" ");
+                }
+            }
+        }
+        out.println();
+    }
+
+    boolean isPrime(int number) {
+        if (number == 2) return true;
+        else if (number < 2 || number % 2 == 0) {
+            return false;
+        } else {
+            for(int i = 3; i*i <= number; i += 2)
+                if(number % i == 0)
+                    return false;
+        }
+        return true;
     }
 }

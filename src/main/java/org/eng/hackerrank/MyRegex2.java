@@ -27,28 +27,13 @@ SOFTWARE.
 */
 package org.eng.hackerrank;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import static java.lang.System.out;
-
 /**
- * Created by iuliana on 09/12/2023
- * h<a href="ttps://www.hackerrank.com/challenges/java-end-of-file/problem">Java End Of File</a> */
-public class BasicEndOfFile {
-    public static void main(String... args) throws IOException {
-        int lineNo = 0;
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-            while(true) {
-                try {
-                    lineNo += 1;
-                    var line = reader.readLine();
-                    if (line == null || line.isBlank()) return;
-                    out.println(lineNo + " " + line);
-                } catch (IOException e) {
-                }
-            }
-        }
+ * Created by iuliana on 19/12/2023
+ *
+ * <a href="https://www.hackerrank.com/challenges/duplicate-word/problem">Duplicate Word</a>
+ */
+public class MyRegex2 {
+    public static void main(String... args) {
+        // TODO
     }
 }

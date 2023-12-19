@@ -37,7 +37,7 @@ import static java.lang.System.out;
 /**
  * Created by iuliana on 09/12/2023
  *
- * <a href="https://www.hackerrank.com/challenges/java-loops-i/problem?isFullScreen=true">Java Loops I</a>
+ * <a href="https://www.hackerrank.com/challenges/java-loops-i/problem">Java Loops I</a>
  */
 public class BasicLoopI {
     public static void main(String... args) throws IOException {

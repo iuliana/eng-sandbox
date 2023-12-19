@@ -37,7 +37,7 @@ import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- * <a href="https://www.hackerrank.com/challenges/java-datatypes/problem?isFullScreen=true">Java DataTypes</a>
+ * <a href="https://www.hackerrank.com/challenges/java-datatypes/problem">Java DataTypes</a>
  */
 public class BasicDataTypes {
     public static Predicate<Long> isByte = x -> x >= Byte.MIN_VALUE && x <= Byte.MAX_VALUE;

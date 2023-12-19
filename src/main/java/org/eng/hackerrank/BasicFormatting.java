@@ -36,7 +36,7 @@ import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- * <a href="https://www.hackerrank.com/challenges/java-output-formatting/problem?isFullScreen=true">Java Output Formatting</a>
+ * <a href="https://www.hackerrank.com/challenges/java-output-formatting/problem">Java Output Formatting</a>
  */
 
 

@@ -27,28 +27,49 @@ SOFTWARE.
 */
 package org.eng.hackerrank;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import org.eng.InReader;
+import org.junit.jupiter.api.Test;
 
-import static java.lang.System.out;
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Created by iuliana on 09/12/2023
- * h<a href="ttps://www.hackerrank.com/challenges/java-end-of-file/problem">Java End Of File</a> */
-public class BasicEndOfFile {
-    public static void main(String... args) throws IOException {
-        int lineNo = 0;
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-            while(true) {
-                try {
-                    lineNo += 1;
-                    var line = reader.readLine();
-                    if (line == null || line.isBlank()) return;
-                    out.println(lineNo + " " + line);
-                } catch (IOException e) {
-                }
-            }
-        }
+ * Created by iuliana on 18/12/2023
+ *
+ * @version TODO
+ */
+public class MyRegexTest {
+
+    @Test
+    void invalidIPs(){
+        var checker = new MyRegex();
+        assertFalse(checker.isValidIP("000.12.234.23.23"));
+        assertFalse(checker.isValidIP("666.666.23.23"));
+        assertFalse(checker.isValidIP(".213.123.23.32"));
+        assertFalse(checker.isValidIP("23.45.22.32."));
+        assertFalse(checker.isValidIP("I.Am.not.an.ip"));
+    }
+
+    @Test
+    void validIPs(){
+        var checker = new MyRegex();
+        assertTrue(checker.isValidIP("000.12.12.034"));
+        assertTrue(checker.isValidIP("121.234.12.12"));
+        assertTrue(checker.isValidIP("23.45.12.56"));
+        assertTrue(checker.isValidIP("192.168.0.5"));
+        assertTrue(checker.isValidIP("127.0.0.1"));
+    }
+
+    @Test
+    void hrSample() throws IOException {
+        var ins = InReader.lines("regex.in", this.getClass());
+        var sb = new StringBuilder();
+        var checker = new MyRegex();
+        ins.map(checker::isValidIP).forEach(b -> sb.append(STR."\{b}\n"));
+        sb.setLength(sb.length() - 1);
+
+        var out = InReader.text("regex.out", this.getClass());
+        assertEquals(sb.toString(), out);
     }
 }

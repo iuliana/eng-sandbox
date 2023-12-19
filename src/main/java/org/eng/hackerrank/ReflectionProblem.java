@@ -34,7 +34,7 @@ import static java.lang.System.out;
 
 /**
  * Created by iuliana on 17/12/2023
- * <a href="https://www.hackerrank.com/challenges/java-reflection-attributes/problem?isFullScreen=true">Java Reflection Attributes</a>
+ * <a href="https://www.hackerrank.com/challenges/java-reflection-attributes/problem">Java Reflection Attributes</a>
  */
 public class ReflectionProblem {
 

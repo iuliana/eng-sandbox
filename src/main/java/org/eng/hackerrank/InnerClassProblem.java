@@ -27,13 +27,36 @@ SOFTWARE.
 */
 package org.eng.hackerrank;
 
+import java.io.*;
+import java.lang.reflect.*;
+import java.util.*;
+import java.util.regex.*;
+import java.security.*;
+
 /**
  * Created by iuliana on 17/12/2023
  *
- * <a href="https://www.hackerrank.com/challenges/can-you-access/problem?isFullScreen=true">Can You Access</a>
+ * <a href="https://www.hackerrank.com/challenges/can-you-access/problem">Can You Access</a>
  */
 public class InnerClassProblem {
-    public static void main(String... args) {
+    public static void main(String... args) throws Exception {
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+            int num = Integer.parseInt(br.readLine().trim());
+            Inner inner = new InnerClassProblem.Inner();
+            Object o = inner.new Private();// Must be used to hold the reference of the instance of the class Solution.Inner.Private
+            Method method = o.getClass().getDeclaredMethod("powerof2", int.class);
+            method.setAccessible(true);
+            System.out.println(num + " is " + method.invoke(o, num));
+            System.out.println("An instance of class: " + o.getClass().getCanonicalName() + " has been created");
+        }
+    }//end of main
+    static class Inner{
+        private class Private{
+            private String powerof2(int num){
+                return ((num&num-1)==0)?"power of 2":"not a power of 2";
+            }
+        }
+    }//end of Inner
 
-    }
-}
+}//end of Solution
+
