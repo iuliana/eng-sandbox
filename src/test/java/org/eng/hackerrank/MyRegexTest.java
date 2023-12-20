@@ -85,4 +85,15 @@ public class MyRegexTest {
         assertEquals(sb.toString(), out);
     }
 
+    @Test
+    void hrRegex3Sample() throws IOException {
+        var ins = InReader.lines("regex-02.in", this.getClass());
+        var sb = new StringBuilder();
+        ins.map(ValidUsernameChecker::matches).forEach(b -> sb.append(STR."\{b}\n"));
+        sb.setLength(sb.length() - 1);
+
+        var out = InReader.text("regex-02.out", this.getClass());
+        assertEquals(sb.toString(), out);
+    }
+
 }
