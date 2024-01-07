@@ -40,8 +40,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created by iuliana on 14/12/2023
- *
- * @version TODO
  */
 public class GearRatiosTest {
 

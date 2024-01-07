@@ -1,7 +1,7 @@
 /*
 Freeware License, some rights reserved
 
-Copyright (c) 2023 Iuliana Cosmina
+Copyright (c) 2024 Iuliana Cosmina
 
 Permission is hereby granted, free of charge, to anyone obtaining a copy 
 of this software and associated documentation files (the "Software"), 
@@ -27,32 +27,30 @@ SOFTWARE.
 */
 package org.eng.hackerrank;
 
-import org.eng.InReader;
-import org.junit.jupiter.api.Test;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static java.lang.System.out;
 
 /**
- * Created by iuliana on 10/12/2023
+ * Created by iuliana on 04/01/2024
+ * <a href="https://www.hackerrank.com/challenges/java-exception-handling-try-catch/problem">Java Exception Handling (Try-catch)</a>
  */
-public class BasicConversionTest {
+public class TryCatchProblem {
+    public static void main(String... args) {
+        try(var scan = new Scanner(System.in)) {
+            try {
+                var x = scan.nextInt();
+                var y = scan.nextInt();
 
-    @Test
-    void findDayCheck(){
-        assertEquals("wednesday".toUpperCase(), BasicConversion.findDay(8,5, 2015));
-    }
-
-    @Test
-    void findDayUsingCalendarCheck(){
-        assertEquals("wednesday".toUpperCase(), BasicConversion.findDayUsingCalendar(8,5, 2015));
-    }
-
-    @Test
-    void convertPayment() throws IOException {
-        var res = BasicConversion.format(12324.134D);
-        var out = InReader.text("currency.out", this.getClass());
-        assertEquals(out, res);
+                out.println((x / y));
+            } catch (Exception e) {
+                if (e instanceof InputMismatchException) {
+                    out.println("java.util.InputMismatchException");
+                } else {
+                    out.println(e);
+                }
+            }
+        }
     }
 }

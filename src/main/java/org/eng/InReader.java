@@ -38,8 +38,6 @@ import java.util.stream.Stream;
 
 /**
  * Created by iuliana on 09/12/2023
- *
- * @version TODO
  */
 public class InReader {
 
@@ -48,6 +46,10 @@ public class InReader {
        return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8);
     }
 
+
+    public static List<String> linesAsList(String fileName, Class c) throws IOException {
+        return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8).toList();
+    }
     public static String text(String fileName, Class c) throws IOException {
         return Files.readString(Path.of(c.getClassLoader().getResource(fileName).getPath()));
     }

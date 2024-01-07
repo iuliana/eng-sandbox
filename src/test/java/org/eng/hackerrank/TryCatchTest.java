@@ -1,7 +1,7 @@
 /*
 Freeware License, some rights reserved
 
-Copyright (c) 2023 Iuliana Cosmina
+Copyright (c) 2024 Iuliana Cosmina
 
 Permission is hereby granted, free of charge, to anyone obtaining a copy 
 of this software and associated documentation files (the "Software"), 
@@ -25,65 +25,67 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.aoc;
+package org.eng.hackerrank;
 
 import org.eng.InReader;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Created by iuliana on 10/12/2023
+ * Created by iuliana on 05/01/2024
  */
-public class AlphaNumericCypherTest {
+public class TryCatchTest {
+
     @Test
-    void testSampleZero() throws IOException {
-        testTheThing("aoc-00");
+    void test00() throws IOException {
+        testTheThing("trycatch-00");
     }
 
     @Test
-    void testSampleOne() throws IOException {
-        testTheThing("aoc-01-2");
+    void test01() throws IOException {
+        testTheThing("trycatch-01");
     }
 
     @Test
-    void testSampleTwo() throws IOException {
-        testTheThing("aoc-02");
+    void test02() throws IOException {
+        testTheThing("trycatch-02");
     }
 
     @Test
-    void testSampleThree() throws IOException {
-        testTheThing("aoc-03");
+    void test03() throws IOException {
+        testTheThing("trycatch-03");
     }
 
     @Test
-    void testSampleFour() throws IOException {
-        testTheThing("aoc-04");
+    void test04() throws IOException {
+        testTheThing("trycatch-04");
     }
 
-    @Test
-    void testSampleFive() throws IOException {
-        testTheThing("aoc-05");
-    }
-
-    @Test
-    void testSampleOfficial() throws IOException {
-        testTheThing("aoc-99-2");
-    }
 
     void testTheThing(String filename) throws IOException {
-        var sum = 0;
-        try(BufferedReader br = InReader.getReader(STR."\{filename}.in", this.getClass())) {
-            String line;
-            while ( (line = br.readLine()) != null) {
-                sum += AlphaNumericCypher.decode(line);
-            }
-        }
+        var output  = InReader.lines(STR."\{filename}.out", this.getClass()).findFirst().orElse(null);
 
-        var output  = InReader.line(STR."\{filename}.out", this.getClass());
-        assertEquals(output, sum);
+        try(BufferedReader br = InReader.getReader(STR."\{filename}.in", this.getClass())) {
+            String xstr = br.readLine();
+            String ystr =  br.readLine();
+            int x;
+            int y;
+            String res = "";
+            try {
+                x = Integer.parseInt(xstr);
+                y = Integer.parseInt(ystr);
+                res = STR."\{x / y}";
+            } catch (Exception e ){
+                if (e instanceof  NumberFormatException) {
+                    res = "java.util.InputMismatchException"; // because we are not using scanner here
+                } else {
+                    res = e.toString();
+                }
+            }
+            assertEquals(output, res);
+        }
     }
 }
