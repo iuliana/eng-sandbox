@@ -11,8 +11,7 @@
   <url>https://iuliana-cosmina.com</url>
 
   <properties>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
+    <java.version>21</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <logback.version>1.4.14</logback.version>
@@ -21,6 +20,40 @@
 
   <build>
     <finalName>eng-sandbox</finalName>
+    <defaultGoal>clean package</defaultGoal>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.12.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.2.3</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <!-- since version 3.10.1-->
+          <release>${java.version}</release>
+          <enablePreview>true</enablePreview>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <argLine>--enable-preview</argLine>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 
   <dependencies>
