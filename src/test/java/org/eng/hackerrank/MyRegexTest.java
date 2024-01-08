@@ -36,8 +36,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by iuliana on 18/12/2023
- *
- * @version TODO
  */
 public class MyRegexTest {
 

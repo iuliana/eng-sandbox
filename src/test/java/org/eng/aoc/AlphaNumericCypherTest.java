@@ -37,8 +37,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created by iuliana on 10/12/2023
- *
- * @version TODO
  */
 public class AlphaNumericCypherTest {
     @Test
