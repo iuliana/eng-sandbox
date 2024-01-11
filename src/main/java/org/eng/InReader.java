@@ -34,6 +34,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -46,8 +47,25 @@ public class InReader {
        return Files.lines(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8);
     }
 
+    public static int[][] matrix(String fileName, Class c)throws IOException {
+        var lines = lines(fileName, c).collect(Collectors.toList());
+        var columns = lines.getFirst().replaceAll("\\s+$", "").split(" ").length;
+        var rows = lines.size();
+        var matrix = new int[rows][columns];
+        for (int i = 0; i < rows; i++) {
+            var vals = lines.get(i).replaceAll("\\s+$", "").split(" ");
+            for (int j = 0; j < vals.length; j++) {
+                matrix[i][j] = Integer.parseInt(vals[j]);
+                if (matrix[i][j] < -9 || matrix[i][j] > 9) {
+                    throw new IllegalArgumentException("Unsuitable number!");
+                }
+            }
+        }
+        return matrix;
+    }
+
     public static String text(String fileName, Class c) throws IOException {
-        return Files.readString(Path.of(c.getClassLoader().getResource(fileName).getPath()));
+        return Files.readString(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8);
     }
 
     public static int line(String fileName, Class c) throws IOException {
@@ -55,6 +73,6 @@ public class InReader {
     }
 
     public static BufferedReader getReader(String fileName, Class c) throws IOException {
-        return Files.newBufferedReader(Path.of(c.getClassLoader().getResource(fileName).getPath()));
+        return Files.newBufferedReader(Path.of(c.getClassLoader().getResource(fileName).getPath()), StandardCharsets.UTF_8);
     }
 }
