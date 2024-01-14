@@ -9,7 +9,6 @@ import java.util.Arrays;
 import static org.eng.hackerrank.Array2D.compute;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 public class Array2DTest {
 
     @Test
