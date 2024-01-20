@@ -25,30 +25,29 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.hackerrank;
+package org.eng.hackerrank.simple;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.stream.IntStream;
 
 import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- * h<a href="ttps://www.hackerrank.com/challenges/java-end-of-file/problem">Java End Of File</a> */
-public class BasicEndOfFile {
+ *
+ * <a href="https://www.hackerrank.com/challenges/java-stdin-and-stdout-1/problem">Java Stdin and Stdout I</a>
+ */
+public class BasicSin {
+
     public static void main(String... args) throws IOException {
-        int lineNo = 0;
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-            while(true) {
+            IntStream.range(0, 3).forEach(_ -> {
                 try {
-                    lineNo += 1;
-                    var line = reader.readLine();
-                    if (line == null || line.isBlank()) return;
-                    out.println(lineNo + " " + line);
-                } catch (IOException e) {
-                }
-            }
+                    out.println(Integer.parseInt(reader.readLine()));
+                } catch (IOException _) {}
+            });
         }
     }
 }

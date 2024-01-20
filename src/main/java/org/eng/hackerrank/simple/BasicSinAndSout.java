@@ -25,45 +25,32 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.hackerrank;
+package org.eng.hackerrank.simple;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.function.Predicate;
-import java.util.stream.IntStream;
 
 import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- * <a href="https://www.hackerrank.com/challenges/java-datatypes/problem">Java DataTypes</a>
+ * <a href="https://www.hackerrank.com/challenges/java-stdin-stdout/problem">Java Stdin and Stdout II</a>
  */
-public class BasicDataTypes {
-    public static Predicate<Long> isByte = x -> x >= Byte.MIN_VALUE && x <= Byte.MAX_VALUE;
-    public static Predicate<Long> isShort = x -> x >= Short.MIN_VALUE && x <= Short.MAX_VALUE;
-    public static Predicate<Long> isInteger = x -> x >= Integer.MIN_VALUE && x <= Integer.MAX_VALUE;
-    public static Predicate<Long> isLong = x -> x >= Long.MIN_VALUE && x <= Long.MAX_VALUE;
+public class BasicSinAndSout {
 
     public static void main(String... args) {
-        try (var sc = new Scanner(System.in)) {
-            var t = sc.nextInt();
-            List<String> input = new ArrayList<>();
-            sc.nextLine();
-            IntStream.range(0, t).forEach(i -> input.add(sc.nextLine().strip()));
+        String s;
+        Double d;
+        Integer i;
 
-            input.forEach(line -> {
-                try {
-                    var x = Long.parseLong(line);
-                    out.println(x + " can be fitted in:");
-                    if (isByte.test(x)) out.println("* byte");
-                    if (isShort.test(x)) out.println("* short");
-                    if (isInteger.test(x)) out.println("* int");
-                    if (isLong.test(x)) out.println("* long");
-                } catch (Exception e) {
-                    out.println(line + " can't be fitted anywhere.");
-                }
-            });
+        try(var scan = new Scanner(System.in)) {
+            i = scan.nextInt();
+            d = scan.nextDouble();
+            scan.nextLine(); // gobbling <Enter>
+            s = scan.nextLine();
         }
+
+        out.println(STR."String: \{s}");
+        out.println(STR."Double: \{d}");
+        out.println(STR."Int: \{i}");
     }
 }

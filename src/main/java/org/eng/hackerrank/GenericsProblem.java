@@ -1,7 +1,7 @@
 /*
 Freeware License, some rights reserved
 
-Copyright (c) 2023 Iuliana Cosmina
+Copyright (c) 2024 Iuliana Cosmina
 
 Permission is hereby granted, free of charge, to anyone obtaining a copy 
 of this software and associated documentation files (the "Software"), 
@@ -27,30 +27,38 @@ SOFTWARE.
 */
 package org.eng.hackerrank;
 
-import java.util.Scanner;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 
 import static java.lang.System.out;
 
 /**
- * Created by iuliana on 09/12/2023
- * <a href="https://www.hackerrank.com/challenges/java-stdin-stdout/problem">Java Stdin and Stdout II</a>
+ * Created by iuliana on 20/01/2024
+ *
+ * <a href="https://www.hackerrank.com/challenges/java-generics/problem">Java Generics</a>
  */
-public class BasicSinAndSout {
-
+public class GenericsProblem {
     public static void main(String... args) {
-        String s;
-        Double d;
-        Integer i;
-
-        try(var scan = new Scanner(System.in)) {
-            i = scan.nextInt();
-            d = scan.nextDouble();
-            scan.nextLine(); // gobbling <Enter>
-            s = scan.nextLine();
+        var myPrinter = new Printer();
+        Integer[] intArray = {1, 2, 3};
+        String[] stringArray = {"Hello", "World"};
+        myPrinter.printArray(intArray);
+        myPrinter.printArray(stringArray);
+        var count = 0;
+        for (Method method : Printer.class.getDeclaredMethods()) {
+            String name = method.getName();
+            if (name.equals("printArray"))
+                count++;
         }
-
-        out.println(STR."String: \{s}");
-        out.println(STR."Double: \{d}");
-        out.println(STR."Int: \{i}");
+        if (count > 1) out.println("Method overloading is not allowed!");
     }
+
+}
+
+class Printer
+{
+    public <T> void printArray(T[] a) {
+        Arrays.stream(a).forEach(out::println);
+    }
+
 }

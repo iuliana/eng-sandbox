@@ -25,40 +25,45 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.hackerrank;
+package org.eng.hackerrank.simple;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
+import java.util.stream.IntStream;
 
 import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- * <a href="https://www.hackerrank.com/challenges/java-static-initializer-block/problem">Java Static Initializer</a>
+ * <a href="https://www.hackerrank.com/challenges/java-datatypes/problem">Java DataTypes</a>
  */
-public class BasicStaticInitializer {
-
-    static int B;
-    static int H;
-
-    static {
-        try (var sc = new Scanner(System.in)) {
-            B = sc.nextInt();
-            if (B < -100 || B > 100) {
-                throw new IllegalArgumentException("B outside permitted interval");
-            }
-            sc.nextLine();
-            H = sc.nextInt();
-            if (H < -100 || H > 100) {
-                throw new IllegalArgumentException("H outside permitted interval");
-            }
-        }
-    }
+public class BasicDataTypes {
+    public static Predicate<Long> isByte = x -> x >= Byte.MIN_VALUE && x <= Byte.MAX_VALUE;
+    public static Predicate<Long> isShort = x -> x >= Short.MIN_VALUE && x <= Short.MAX_VALUE;
+    public static Predicate<Long> isInteger = x -> x >= Integer.MIN_VALUE && x <= Integer.MAX_VALUE;
+    public static Predicate<Long> isLong = x -> x >= Long.MIN_VALUE && x <= Long.MAX_VALUE;
 
     public static void main(String... args) {
-        if (B <= 0 || H <= 0) {
-            out.println("java.lang.Exception: Breadth and height must be positive");
-            return;
+        try (var sc = new Scanner(System.in)) {
+            var t = sc.nextInt();
+            List<String> input = new ArrayList<>();
+            sc.nextLine();
+            IntStream.range(0, t).forEach(i -> input.add(sc.nextLine().strip()));
+
+            input.forEach(line -> {
+                try {
+                    var x = Long.parseLong(line);
+                    out.println(x + " can be fitted in:");
+                    if (isByte.test(x)) out.println("* byte");
+                    if (isShort.test(x)) out.println("* short");
+                    if (isInteger.test(x)) out.println("* int");
+                    if (isLong.test(x)) out.println("* long");
+                } catch (Exception e) {
+                    out.println(line + " can't be fitted anywhere.");
+                }
+            });
         }
-        out.println( B*H );
     }
 }

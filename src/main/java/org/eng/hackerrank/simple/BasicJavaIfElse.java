@@ -25,31 +25,43 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.hackerrank;
+package org.eng.hackerrank.simple;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.stream.IntStream;
-
 import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
  *
- * <a href="https://www.hackerrank.com/challenges/java-loops-i/problem">Java Loops I</a>
+ * <a href="https://www.hackerrank.com/challenges/java-if-else/problem">Java If-Else</a>
  */
-public class BasicLoopI {
+public class BasicJavaIfElse {
+
+    public static String getType(int N) {
+        var type = "Weird";
+        if( N <0 || N > 100) {
+            throw new IllegalArgumentException("N outside interval!");
+        }
+
+        if (N % 2 != 0) {
+            return type;
+        }
+
+        if (N>=2 && N<= 5) {
+            return STR."Not \{type}";
+        } else  if (N>=6 && N<= 20) {
+            return type;
+        } else {
+            return STR."Not \{type}";
+        }
+    }
+
     public static void main(String... args) throws IOException {
         try(var bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             var N = Integer.parseInt(bufferedReader.readLine().strip());
-            if (N < 2 || N > 20) {
-                throw new IllegalArgumentException("N outside permitted interval!");
-            }
-
-            IntStream.range(1, 11).forEach(i -> {
-                out.println(STR."\{N} x \{i} = \{N*i}");
-            });
+            out.println(getType(N));
         }
     }
 }

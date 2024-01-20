@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.System.out;
-import static org.eng.hackerrank.BasicDataTypes.*;
+import static org.eng.hackerrank.simple.BasicDataTypes.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**

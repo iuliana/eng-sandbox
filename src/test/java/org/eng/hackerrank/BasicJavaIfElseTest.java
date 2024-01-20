@@ -30,7 +30,7 @@ package org.eng.hackerrank;
 import org.junit.jupiter.api.Test;
 
 
-import static org.eng.hackerrank.BasicJavaIfElse.getType;
+import static org.eng.hackerrank.simple.BasicJavaIfElse.getType;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**

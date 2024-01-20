@@ -25,29 +25,40 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.hackerrank;
+package org.eng.hackerrank.simple;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.stream.IntStream;
+import java.util.Scanner;
 
 import static java.lang.System.out;
 
 /**
  * Created by iuliana on 09/12/2023
- *
- * <a href="https://www.hackerrank.com/challenges/java-stdin-and-stdout-1/problem">Java Stdin and Stdout I</a>
+ * <a href="https://www.hackerrank.com/challenges/java-static-initializer-block/problem">Java Static Initializer</a>
  */
-public class BasicSin {
+public class BasicStaticInitializer {
 
-    public static void main(String... args) throws IOException {
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-            IntStream.range(0, 3).forEach(_ -> {
-                try {
-                    out.println(Integer.parseInt(reader.readLine()));
-                } catch (IOException _) {}
-            });
+    static int B;
+    static int H;
+
+    static {
+        try (var sc = new Scanner(System.in)) {
+            B = sc.nextInt();
+            if (B < -100 || B > 100) {
+                throw new IllegalArgumentException("B outside permitted interval");
+            }
+            sc.nextLine();
+            H = sc.nextInt();
+            if (H < -100 || H > 100) {
+                throw new IllegalArgumentException("H outside permitted interval");
+            }
         }
+    }
+
+    public static void main(String... args) {
+        if (B <= 0 || H <= 0) {
+            out.println("java.lang.Exception: Breadth and height must be positive");
+            return;
+        }
+        out.println( B*H );
     }
 }

@@ -25,35 +25,31 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.hackerrank;
+package org.eng.hackerrank.simple;
 
-import org.eng.InReader;
-import org.eng.hackerrank.simple.BasicConversion;
-import org.junit.jupiter.api.Test;
-
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static java.lang.System.out;
 
 /**
- * Created by iuliana on 10/12/2023
+ * Created by iuliana on 09/12/2023
+ *
+ * <a href="https://www.hackerrank.com/challenges/java-loops-i/problem">Java Loops I</a>
  */
-public class BasicConversionTest {
+public class BasicLoopI {
+    public static void main(String... args) throws IOException {
+        try(var bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+            var N = Integer.parseInt(bufferedReader.readLine().strip());
+            if (N < 2 || N > 20) {
+                throw new IllegalArgumentException("N outside permitted interval!");
+            }
 
-    @Test
-    void findDayCheck(){
-        assertEquals("wednesday".toUpperCase(), BasicConversion.findDay(8,5, 2015));
-    }
-
-    @Test
-    void findDayUsingCalendarCheck(){
-        assertEquals("wednesday".toUpperCase(), BasicConversion.findDayUsingCalendar(8,5, 2015));
-    }
-
-    @Test
-    void convertPayment() throws IOException {
-        var res = BasicConversion.format(12324.134D);
-        var out = InReader.text("currency.out", this.getClass());
-        assertEquals(out, res);
+            IntStream.range(1, 11).forEach(i -> {
+                out.println(STR."\{N} x \{i} = \{N*i}");
+            });
+        }
     }
 }

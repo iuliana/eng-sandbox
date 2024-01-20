@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.System.out;
-import static org.eng.hackerrank.BasicLoopII.COMPUTE;
+import static org.eng.hackerrank.simple.BasicLoopII.COMPUTE;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
