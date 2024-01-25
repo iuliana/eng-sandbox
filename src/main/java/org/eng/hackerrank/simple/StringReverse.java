@@ -49,13 +49,29 @@ public class StringReverse {
             var reverse = new String(reverseArr);
             System.out.println(a.equals(reverse) ? "Yes" : "No");*/
 
-            var reverse = "";
+         /* var reverse = "";
             var stack = new Stack<Character>();
             a.chars().forEach(c -> stack.push((char) c));
             while(!stack.isEmpty()) {
                 reverse =  reverse.concat(stack.pop().toString());
             }
-            System.out.println(a.equals(reverse) ? "Yes" : "No");
+            System.out.println(a.equals(reverse) ? "Yes" : "No");*/
+
+           /* var reverse = new StringBuilder(a).reverse().toString();
+            System.out.println(a.equals(reverse) ? "Yes" : "No");*/
+
+            /* without creating additional objects */
+            var i =0;
+            var j = n;
+            while( i <= j) {
+                if (a.charAt(i) == a.charAt(j)) {
+                    i++; j--;
+                } else {
+                    System.out.println("No");
+                    return;
+                }
+             }
+            System.out.println("Yes");
         }
     }
 }
