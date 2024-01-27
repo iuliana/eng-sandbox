@@ -28,7 +28,7 @@ SOFTWARE.
 package org.eng.hackerrank.simple;
 
 import java.util.Scanner;
-import java.util.Stack;
+//import java.util.Stack;
 
 /**
  * Created by iuliana on 25/01/2024
