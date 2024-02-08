@@ -1,7 +1,7 @@
 /*
 Freeware License, some rights reserved
 
-Copyright (c) 2023 Iuliana Cosmina
+Copyright (c) 2024 Iuliana Cosmina
 
 Permission is hereby granted, free of charge, to anyone obtaining a copy 
 of this software and associated documentation files (the "Software"), 
@@ -25,39 +25,40 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.hackerrank;
+package org.eng.hackerrank.medium;
 
-import java.util.Scanner;
-import java.util.regex.Pattern;
-import static java.lang.System.out;
+import org.eng.InReader;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Created by iuliana on 19/12/2023
- *
- * <a href="https://www.hackerrank.com/challenges/duplicate-word/problem">Duplicate Word</a>
- * For some reason on Hacker Rank, this solution is not accepted in Java 8 and Java 15
+ * Created by iuliana on 07/02/2024
  */
-public class MyRegex2 {
+public class TagContentExtractorTest {
 
-    public static final Pattern p = Pattern.compile("\\b(\\w+)\\b(?:\\s+\\1\\b)+", Pattern.CASE_INSENSITIVE);
-    public static void main(String... args) {
-        try (var in = new Scanner(System.in)) {
-            int numSentences = Integer.parseInt(in.nextLine());
-            var sb = new StringBuilder();
-            while (numSentences-- > 0) {
-                String input = in.nextLine();
-                sb.append(STR."\{deleteDups(input)}\n");
-            }
-            sb.setLength(sb.length() - 1);
-            out.println(sb);
-        }
+    @Test
+    void run00() throws IOException {
+        testTheThing("tce-00");
     }
 
-    public static String deleteDups(String input) {
-        var m = p.matcher(input);
-        while (m.find()) {
-            input = input.replaceAll(m.group(), m.group(1));
-        }
-        return input;
+    @Test
+    void run01() throws IOException {
+        testTheThing("tce-01");
+    }
+
+    @Test
+    void run02() throws IOException {
+        testTheThing("tce-02");
+    }
+
+    void testTheThing(String filename) throws IOException {
+        var in = InReader.lines(STR."\{filename}.in", this.getClass()).toList();
+        var processed =  TagContentExtractor.processLines(in);
+
+        var out = InReader.text(STR."\{filename}.out", this.getClass());
+        assertEquals(out, processed);
     }
 }
