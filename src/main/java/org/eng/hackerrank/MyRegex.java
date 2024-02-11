@@ -30,6 +30,8 @@ package org.eng.hackerrank;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import static java.lang.System.out;
+
 /**
  * Created by iuliana on 18/12/2023
  *
@@ -44,11 +46,15 @@ public class MyRegex {
             "([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\\." +
             "([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])$";
 
+    static final String formula = "^([^\n]{3}\\.[^\n]{3}\\.[^\n]{3}\\.[^\n]{3})$";
     public static void main(String... args) {
         try (var in = new Scanner(System.in)) {
             while (in.hasNext()) {
-                String IP = in.next();
-                System.out.println(IP.matches(regex));
+                var IP = in.next();
+                out.println(IP.matches(regex));
+
+                var input = in.next();
+                out.println(isMatchingFormula(input));
             }
         }
     }
@@ -56,4 +62,7 @@ public class MyRegex {
         return ip.matches(regex);
     }
 
+    public static boolean isMatchingFormula(String in){
+        return in.matches(formula);
+    }
 }
