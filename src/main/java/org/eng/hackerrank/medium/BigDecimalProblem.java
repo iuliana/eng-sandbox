@@ -35,28 +35,23 @@ import static java.lang.System.out;
 /**
  * Created by iuliana on 08/02/2024
  * <a href="https://www.hackerrank.com/challenges/java-bigdecimal/problem">Java BigDecimal</a>
+ * TODO - do not jump to the easy solution of using a treemap!! Apparently you have to re-arrange the array.
  */
 public class BigDecimalProblem {
     public static void main(String... args) {
         try(var sc = new Scanner(System.in)) {
             int n = sc.nextInt();
-            String[] s = new String[n + 2];
+            if (n< 1 || n> 200) {
+                throw  new IllegalArgumentException("Unsuitable no of arguments");
+            }
             var map = new TreeMap<BigDecimal, List<String>>();
             for (int i = 0; i < n; i++) {
-                s[i] = sc.next();
-                var bd = new BigDecimal(s[i]);
-                if (!map.containsKey(bd)) {
-                    var l = new ArrayList<String>(); l.add(s[i]);
-                    map.put(bd, l);
-                } else {
-                    map.get(bd).add(s[i]);
-                }
+                var s = sc.next();
+                var bd = new BigDecimal(s);
+                map.computeIfAbsent(bd, _-> new ArrayList<>()).add(s);
             }
 
-            for (var me : map.descendingKeySet())  {
-               var vals = map.get(me);
-               for (var v : vals) out.println(v);
-            }
+            map.descendingMap().forEach((_, v) -> v.forEach(out::println));
         }
     }
 }
