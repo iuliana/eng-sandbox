@@ -28,13 +28,11 @@ SOFTWARE.
 package org.eng.hackerrank;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 import static java.lang.System.out;
 
 /**
  * Created by iuliana on 18/12/2023
- *
  * <a href="https://www.hackerrank.com/challenges/java-regex/problem">Java Regex</a>
  * IP address is a string in the form "A.B.C.D", where the value of A, B, C, and D may range from 0 to 255.
  * Leading zeros are allowed. The length of A, B, C, or D can't be greater than 3.
@@ -46,7 +44,11 @@ public class MyRegex {
             "([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])\\." +
             "([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])$";
 
+    //https://www.hackerrank.com/challenges/matching-anything-but-new-line/problem
     static final String formula = "^([^\n]{3}\\.[^\n]{3}\\.[^\n]{3}\\.[^\n]{3})$";
+
+    // https://www.hackerrank.com/challenges/matching-digits-non-digit-character/problem
+    static final String digits = "^([\\d]{2,}[\\D]{1}[\\d]{2,}[\\D]{1}[\\d]{4,})$"; // apparently the occurrences are specified as a minimum
     public static void main(String... args) {
         try (var in = new Scanner(System.in)) {
             while (in.hasNext()) {
@@ -55,6 +57,9 @@ public class MyRegex {
 
                 var input = in.next();
                 out.println(isMatchingFormula(input));
+
+                var digi = in.next();
+                out.println(isMatchingDigits(digi));
             }
         }
     }
@@ -64,5 +69,9 @@ public class MyRegex {
 
     public static boolean isMatchingFormula(String in){
         return in.matches(formula);
+    }
+
+    public static boolean isMatchingDigits(String in){
+        return in.matches(digits);
     }
 }
