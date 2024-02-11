@@ -27,14 +27,36 @@ SOFTWARE.
 */
 package org.eng.hackerrank.medium;
 
+import java.math.BigDecimal;
+import java.util.*;
+
+import static java.lang.System.out;
+
 /**
  * Created by iuliana on 08/02/2024
- *
  * <a href="https://www.hackerrank.com/challenges/java-bigdecimal/problem">Java BigDecimal</a>
- * TODO
  */
 public class BigDecimalProblem {
     public static void main(String... args) {
+        try(var sc = new Scanner(System.in)) {
+            int n = sc.nextInt();
+            String[] s = new String[n + 2];
+            var map = new TreeMap<BigDecimal, List<String>>();
+            for (int i = 0; i < n; i++) {
+                s[i] = sc.next();
+                var bd = new BigDecimal(s[i]);
+                if (!map.containsKey(bd)) {
+                    var l = new ArrayList<String>(); l.add(s[i]);
+                    map.put(bd, l);
+                } else {
+                    map.get(bd).add(s[i]);
+                }
+            }
 
+            for (var me : map.descendingKeySet())  {
+               var vals = map.get(me);
+               for (var v : vals) out.println(v);
+            }
+        }
     }
 }
