@@ -49,6 +49,9 @@ public class MyRegex {
 
     // https://www.hackerrank.com/challenges/matching-digits-non-digit-character/problem
     static final String digits = "^([\\d]{2,}[\\D]{1}[\\d]{2,}[\\D]{1}[\\d]{4,})$"; // apparently the occurrences are specified as a minimum
+
+    //https://www.hackerrank.com/challenges/matching-start-end/problem
+    static final String startEnd = "^\\d\\w{4}\\.$"; // apparently the occurrences are specified as a minimum
     public static void main(String... args) {
         try (var in = new Scanner(System.in)) {
             while (in.hasNext()) {
@@ -60,6 +63,9 @@ public class MyRegex {
 
                 var digi = in.next();
                 out.println(isMatchingDigits(digi));
+
+                var se = in.next();
+                out.println(isMatchingStartEnd(se));
             }
         }
     }
@@ -73,5 +79,9 @@ public class MyRegex {
 
     public static boolean isMatchingDigits(String in){
         return in.matches(digits);
+    }
+
+    public static boolean isMatchingStartEnd(String in){
+        return in.matches(startEnd);
     }
 }

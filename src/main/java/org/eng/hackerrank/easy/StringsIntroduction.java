@@ -25,35 +25,31 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.hackerrank.simple;
+package org.eng.hackerrank.easy;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.math.BigInteger;
+import java.util.Locale;
+import java.util.Scanner;
 import static java.lang.System.out;
 
 /**
- * Created by iuliana on 08/02/2024
- * <a href="https://www.hackerrank.com/challenges/java-primality-test/problem">Java Primality Test</a>
- * TODO
+ * Created by iuliana on 15/02/2024
+ *
+ * @version TODO
  */
-public class Primality {
+public class StringsIntroduction {
 
-    public static void main(String... args) throws IOException {
-        try( var bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
-            var n = bufferedReader.readLine();
-            if(n.isEmpty() || n.length() > 100) {
-                throw new IllegalArgumentException("Unsuitable argument");
-            }
-            out.print(isPrime(n) ? "prime" : "not prime");
+    public static void main(String... args) {
+        try(var in = new Scanner(System.in)){
+            var a = in.next();
+            var b = in.next();
+            out.println(a.length() + b.length());
+            out.println(b.compareTo(a) < 0 ? "Yes" : "No");
+            var a0 = a.charAt(0) + "";
+            var b0 = b.charAt(0) + "";
+            out.println(a0 + " " + b0);
+            var a1 = a.replaceFirst(a0, a0.toUpperCase(Locale.ROOT));
+            var b1 = b.replaceFirst(b0, b0.toUpperCase(Locale.ROOT));
+            out.println( a1  + " " + b1 );
         }
-    }
-
-    public static boolean isPrime(String n) {
-        if(n.equals("0") || n.equals("1"))
-            return false;
-        var bi = new BigInteger(n);
-        return bi.isProbablePrime(1);
     }
 }

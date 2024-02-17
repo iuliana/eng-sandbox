@@ -34,7 +34,6 @@ import static java.lang.System.out;
 
 /**
  * Created by iuliana on 08/02/2024
- *
  * <a href="https://www.hackerrank.com/challenges/matching-specific-string/problem">Matching Specific String</a>
  */
 public class MyRegex3 {

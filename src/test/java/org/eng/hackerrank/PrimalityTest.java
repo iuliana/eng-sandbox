@@ -25,35 +25,39 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.hackerrank.simple;
+package org.eng.hackerrank;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.math.BigInteger;
-import static java.lang.System.out;
+import org.junit.jupiter.api.Test;
+
+import static org.eng.hackerrank.simple.Primality.isPrime;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Created by iuliana on 08/02/2024
- * <a href="https://www.hackerrank.com/challenges/java-primality-test/problem">Java Primality Test</a>
- * TODO
+ * Created by iuliana on 17/02/2024
+ *
+ * @version TODO
  */
-public class Primality {
+public class PrimalityTest {
 
-    public static void main(String... args) throws IOException {
-        try( var bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
-            var n = bufferedReader.readLine();
-            if(n.isEmpty() || n.length() > 100) {
-                throw new IllegalArgumentException("Unsuitable argument");
-            }
-            out.print(isPrime(n) ? "prime" : "not prime");
-        }
+    @Test
+    void testPrimes(){
+        assertAll(
+                () -> assertFalse(isPrime("0")),
+                () -> assertFalse(isPrime("1")),
+                () -> assertTrue(isPrime("2")),
+                () -> assertTrue(isPrime("3")),
+                () -> assertTrue(isPrime("5")),
+                () -> assertTrue(isPrime("7")),
+                () -> assertTrue(isPrime("11")),
+                () -> assertTrue(isPrime("13")),
+                () -> assertTrue(isPrime("17")),
+                () -> assertTrue(isPrime("29")),
+                () -> assertTrue(isPrime("7698227959510126866413906652336134899568649319813920268246860935822545591175389330845650773544328161"))
+        );
     }
 
-    public static boolean isPrime(String n) {
-        if(n.equals("0") || n.equals("1"))
-            return false;
-        var bi = new BigInteger(n);
-        return bi.isProbablePrime(1);
+    @Test
+    void testPrimes100(){
+        assertFalse(isPrime("2367495770217142995264827948666809233066409497699870112003149352380375124855230068487109373226251982"));
     }
 }
