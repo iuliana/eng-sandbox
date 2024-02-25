@@ -52,10 +52,17 @@ public class MyRegex {
 
     //https://www.hackerrank.com/challenges/matching-start-end/problem
     static final String startEnd = "^\\d\\w{4}\\.$"; // apparently the occurrences are specified as a minimum
+
+    //https://www.hackerrank.com/challenges/excluding-specific-characters/problem
+    static final String negation = "^([\\D][^aeiou][^bcDF][^\\s][^AEIOU][^\\.,])$";
+
+    //https://www.hackerrank.com/challenges/matching-x-repetitions/problem
+    static final String repetition = "(?i)[a-z02468]{40}[13579\\s]{5}$";
+
     public static void main(String... args) {
         try (var in = new Scanner(System.in)) {
             while (in.hasNext()) {
-                var IP = in.next();
+/*                var IP = in.next();
                 out.println(IP.matches(regex));
 
                 var input = in.next();
@@ -66,6 +73,12 @@ public class MyRegex {
 
                 var se = in.next();
                 out.println(isMatchingStartEnd(se));
+
+                var neg = in.next();
+                out.println(isNegation(neg));*/
+
+                var rep = in.nextLine();
+                out.println(isRepetition(rep));
             }
         }
     }
@@ -83,5 +96,13 @@ public class MyRegex {
 
     public static boolean isMatchingStartEnd(String in){
         return in.matches(startEnd);
+    }
+
+    public static boolean isNegation(String in){
+        return in.matches(negation);
+    }
+
+    public static boolean isRepetition(String in){
+        return in.matches(repetition);
     }
 }
