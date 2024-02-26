@@ -57,7 +57,10 @@ public class MyRegex {
     static final String negation = "^([\\D][^aeiou][^bcDF][^\\s][^AEIOU][^\\.,])$";
 
     //https://www.hackerrank.com/challenges/matching-x-repetitions/problem
-    static final String repetition = "(?i)[a-z02468]{40}[13579\\s]{5}$";
+    static final String repetition = "^(?i)[a-z02468]{40}[13579\\s]{5}$";
+
+    //https://www.hackerrank.com/challenges/matching-range-of-characters/problem
+    static final String ranges = "^[a-z][1-9][^a-z][^A-Z0-9][A-Z].*$"; //
 
     public static void main(String... args) {
         try (var in = new Scanner(System.in)) {
@@ -75,10 +78,16 @@ public class MyRegex {
                 out.println(isMatchingStartEnd(se));
 
                 var neg = in.next();
-                out.println(isNegation(neg));*/
+                out.println(isNegation(neg));
 
                 var rep = in.nextLine();
-                out.println(isRepetition(rep));
+                out.println(isRepetition(rep)); */
+
+                var rangeIn = in.nextLine();
+                if (rangeIn.length() < 5) {
+                    throw new IllegalArgumentException("Unsuitable string!");
+                }
+                out.println(isRange(rangeIn));
             }
         }
     }
@@ -102,7 +111,12 @@ public class MyRegex {
         return in.matches(negation);
     }
 
+    //** test with '2222222222aaaaaaaaaa2222222222aaaaaaaaaa13 57' */
     public static boolean isRepetition(String in){
         return in.matches(repetition);
+    }
+
+    public static boolean isRange(String in) {
+        return in.matches(ranges);
     }
 }
