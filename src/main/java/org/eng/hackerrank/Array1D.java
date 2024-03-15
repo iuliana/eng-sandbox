@@ -25,38 +25,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package org.eng.hackerrank.easy;
+package org.eng.hackerrank;
 
-import java.util.Scanner;
-import java.util.regex.Pattern;
-import static java.lang.System.out;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 
 /**
- * Created by iuliana.cosmina on 09/03/2024
+ * Created by iuliana.cosmina on 14/03/2024
  */
-public class Solution {
-
-    // https://www.hackerrank.com/challenges/matching-word-boundaries/problem
-    //static final String boundaries = "\\b[aeiouAEIOU]\\D+\\b";
-
-    //https://www.hackerrank.com/challenges/matching-ending-items/problem
-    static final String boundaries = "^(?i:[a-z])*s$";
-
-    public static void main(String... args) {
-
-        RegexTest tester = new RegexTest();
-        tester.checker(boundaries);
-    }
-}
-
-class RegexTest {
-
-    public void checker(String regexPattern){
-        try (var in = new Scanner(System.in)) {
-            String testString = in.nextLine();
-            var p = Pattern.compile(regexPattern);
-            var m = p.matcher(testString);
-            out.println(m.find());
+public class Array1D {
+    public static void main(String... args) throws IOException {
+        try(var br = new BufferedReader(new InputStreamReader(System.in))){
+            var n = Integer.parseInt(br.readLine().trim());
+            var a = new Integer[n];
+            for (int i = 0; i < n; i++) {
+                a[i] = Integer.parseInt(br.readLine());
+            }
+            Arrays.stream(a).forEach(System.out::println);
         }
     }
 }
