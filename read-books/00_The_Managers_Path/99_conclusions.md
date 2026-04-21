@@ -6,10 +6,12 @@
 
 Start with a few minutes of free-conversation, to create a human connection
 
+* ask them to come prepared to these meetings
 * ask about vacation, their weekend, hobbies, kids
 * then ask about their project work
 * ask about relationships at work
 * ask about purpose of their work
+* encourage them to ask questions
 
 ### Feedback and Workplace Guidance
 
@@ -26,7 +28,7 @@ Learn how to work.
 
 Strong managers know how to play the company game. 
 
-### Assesing your own Experience
+### Assessing your own Experience
 
 * Have you had a manager you considered good? What did this manager do that you found valuable?
   * Timo Schmuck 
@@ -57,6 +59,10 @@ Strong managers know how to play the company game.
 * Has your manager helped you set any work-related goals for this year?
   * somewhat
 
+* I should know answers to questions they ask
+   * benefits, pension, salary sacrifice
+   * who to send them to when they have a problem
+
 ----
 
 ## Chapter 2
@@ -68,3 +74,18 @@ This is where I made a mistake with Dennis, I assigned James, and thought he wil
 Next time make sure, the buddy actually has time for the mentee, or find somebody that is better at prioritizing.
 
  I made a mistake with others too, I should have dedicated more time to explain the project, use the whiteboard.
+
+### Becoming a Mentor
+
+Skills for manager:
+
+* listening carefully - basic skill
+* empathy - core skill
+* the ability to ask the right questions
+* the ability to help them to ask the right questions
+* communicating **what needs to happen**
+* adjust your responses and actions based on their behaviour and actions
+* the ability to get a fresh perspective on the company, by your new mentee's eyes
+
+**Network Building**  is a worthwhile investment of your time and energy. 
+
