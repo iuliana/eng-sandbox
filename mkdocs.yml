@@ -1,0 +1,23 @@
+site_name: "Summaries of books I read"
+site_url: https://books/summaries
+site_author: Iuliana Cosmina
+site_description: "Summaries of books I read"
+
+docs_dir: read-books
+
+theme:
+  name: material
+  palette:
+    primary: teal
+    highlightjs: true
+    hljs_languages:
+      - java
+      - javascript
+
+plugins:
+  - section-index
+
+nav:
+  - Home: index.md
+  - The Manager's Path:
+    - Chapter 01: 00_The_Managers_Path/01_chapter.md
