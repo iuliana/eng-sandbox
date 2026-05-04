@@ -1,0 +1,22 @@
+#!/bin/bash
+
+OUTDIR="result"
+if [ -d "$OUTDIR" ]; then
+  rm -rf $OUTDIR
+fi
+
+mkdir $OUTDIR
+
+MYDOCS=`ls ./docs/*.md`
+for item in $MYDOCS
+do
+  filename="${item%.*}"
+  src="$filename.md"
+  target="$filename.docx"
+  echo "Converting $src to $target "
+  pandoc -o $target -f markdown+rebase_relative_paths -t docx $src --extract-media=.
+  res=${target//docs/result}
+
+  mv $target $res
+done
+

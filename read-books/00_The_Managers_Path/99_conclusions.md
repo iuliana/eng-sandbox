@@ -42,6 +42,18 @@ Strong managers know how to play the company game.
     * knew how to put things in perspective
     * think long term
 
+### Best and Worst Managers
+
+* 3 best managers you've worked with - emulate them
+  * Florin at Cenit - focused on the company success, invested in people
+  * Nicu at Levi9 - calm, collected, honest
+  * Achim at BearingPoint - listen, socialize
+  * Timo at BearingPoint - honest, listen, socialize, put people in uncomfortable situations to help them grow
+* 3 worst managers you've worked with
+  * Andrei Postolache at Endava
+  * Haiko at BearingPoint
+  * Richard at NCR
+
 * How often do you meet 1-1 with your manager? Do you come to 1-1s with your manager bringing topics to discuss? If your 1-1 is a status meeting, can you use some other means to convey that status?
   * Ludo is my manager I guess
     * every 2 weeks
@@ -87,5 +99,8 @@ Skills for manager:
 * adjust your responses and actions based on their behaviour and actions
 * the ability to get a fresh perspective on the company, by your new mentee's eyes
 
-**Network Building**  is a worthwhile investment of your time and energy. 
+**Network Building**  is a worthwhile investment of your time and energy.
 
+----
+
+## Overall

@@ -19,6 +19,7 @@ build/libs/*.jar
 *.log
 build/*
 
+*.epub
 *.pdf
 *.jar
 *.zip
@@ -29,3 +30,5 @@ hs_err_pid*
 .DS_Store
 generated
 gradlew*
+*.pptx
+presentations

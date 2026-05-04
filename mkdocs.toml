@@ -1,0 +1,26 @@
+[mkdocs]
+nav = [
+    {title="Home", path="index.md"},
+    {title="The Manager's Path", children = [
+        {title="Chapter 01", path="00_The_Managers_Path/01_chapter.md"},
+        {title="Chapter 02", path="00_The_Managers_Path/02_chapter.md"},
+        {title="Conclusions", path="00_The_Managers_Path/conclusions.md"},
+    ]},
+    {title="The Servant As Leader", children = [
+        {title="Conclusions", path="01_The_Servant_as_Leader/99_conclusions.md"},
+    ]},
+    {title="Coaching For Performance", children = [
+        {title="Chapter 01", path="02_Coaching_for_Performance/01_chapter.md"},
+    ]},
+    {title="My Own Notes", children = [
+        {title="Chapter 00", path="99_My_Own_Notes/000_Be_a_Good_One.md"},
+    ]},
+]
+
+[loaders]
+theme = "https://github.com/lovelydinosaur/kelp-theme/archive/refs/heads/main.zip"
+docs = "dir://read-books"
+
+[context]
+title = "Summaries of books I read"
+favicon = "📘"

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+OUTDIR="result_html"
+if [ -d "$OUTDIR" ]; then
+  rm -rf $OUTDIR
+fi
+
+mkdir $OUTDIR
+
+MYDOCS=`ls ./presentations/*.md`
+for item in $MYDOCS
+do
+  filename="${item%.*}"
+  src="$filename.md"
+  target="$filename.html"
+  echo "Converting $src to $target "
+  pandoc -o $target -f markdown+rebase_relative_paths -t html $src --extract-media=.
+  res=${target//docs/result_html}
+
+  mv $target $res
+done
